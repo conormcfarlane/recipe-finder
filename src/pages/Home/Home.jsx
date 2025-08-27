@@ -1,7 +1,11 @@
-import React from 'react'
-
+import React from "react";
+import HomeHero from "./HomeHero";
+import HomeHeroFeatures from "./HomeHeroFeatures";
 export default function Home() {
   return (
-    <div>Home</div>
-  )
+    <div>
+      <HomeHero />
+      <HomeHeroFeatures />
+    </div>
+  );
 }

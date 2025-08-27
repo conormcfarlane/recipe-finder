@@ -10,7 +10,7 @@ export default function Header() {
     { name: "About", path: "/about" },
     { name: "Recipes", path: "/recipes" },
   ];
-  const [isMenuOpen, setIsMenuOpen] = useState("false");
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const handleMenuToggle = () => {
     setIsMenuOpen((prev) => !prev);
   };
@@ -36,10 +36,7 @@ export default function Header() {
             </Link>
           ))}
           <Link to="/recipes">
-            <MainButton
-              text="Browse Recipes"
-              onClick={handleMenuToggle}
-            />
+            <MainButton text="Browse Recipes" onClick={handleMenuToggle} />
           </Link>
         </div>
       )}
