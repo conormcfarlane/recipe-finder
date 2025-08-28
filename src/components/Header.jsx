@@ -18,10 +18,13 @@ export default function Header() {
     <section className="flex relative justify-between items-center pb-5">
       <img src={logo} className="h-8" />
       <button
-        className="bg-neutral-200 p-3 cursor-pointer"
+        className="bg-neutral-100 p-3 cursor-pointer"
         onClick={handleMenuToggle}
       >
-        <img src={iconHamburger} alt="" />
+        <div className="bg-neutral-200 w-10 h-10 flex justify-center items-center rounded-lg">
+          <img src={iconHamburger} alt="" />
+        </div>
+        
       </button>
       {isMenuOpen && (
         <div className="absolute bottom-0 translate-y-48 flex flex-col bg-red-500 w-full px-2">
