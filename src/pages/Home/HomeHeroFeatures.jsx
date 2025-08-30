@@ -27,7 +27,7 @@ export default function HomeHeroFeatures() {
       <p className="text-4xl font-extrabold mb-8 md:text-center">
         What you'll get
       </p>
-      <div className="flex ">
+      <div className="flex flex-col lg:flex-row">
         {features.map((feature) => (
           <div key={feature.title} className="flex flex-col mb-6 flex-1">
             <div className="w-15 h-15 mb-5 bg-white flex items-center justify-center rounded-2xl">

@@ -13,7 +13,7 @@ export default function HomeHero() {
           Discover eight quick, whole-food recipes that you can cook tonight-no
           processed junk, no guesswork.
         </p>
-        <div className="w-1/4">
+        <div className="w-1/2 md:w-1/4">
           <MainButton text="Start exploring" />
         </div>
       </div>

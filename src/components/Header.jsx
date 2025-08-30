@@ -15,19 +15,31 @@ export default function Header() {
     setIsMenuOpen((prev) => !prev);
   };
   return (
-    <section className="flex relative justify-between items-center pb-5">
-      <img src={logo} className="h-8" />
-      <button
-        className="bg-neutral-100 p-3 cursor-pointer"
-        onClick={handleMenuToggle}
-      >
-        <div className="bg-neutral-200 w-10 h-10 flex justify-center items-center rounded-lg">
-          <img src={iconHamburger} alt="" />
+    <div>
+      <section className="flex relative justify-between items-center pb-5">
+        <img src={logo} className="h-8" />
+
+        <div className="hidden lg:flex gap-10">
+          {navLinks.map((link) => (
+            <Link key={link.name} to={link.path} className="py-3">
+              {link.name}
+            </Link>
+          ))}
         </div>
-        
-      </button>
+        <button
+          className="bg-neutral-100 p-3 cursor-pointer"
+          onClick={handleMenuToggle}
+        >
+          <div className="bg-neutral-200 w-10 h-10 flex justify-center items-center rounded-lg lg:hidden">
+            <img src={iconHamburger} alt="" />
+          </div>
+          <div className="hidden lg:block">
+            <MainButton text="Browse Recipes" />
+          </div>
+        </button>
+      </section>
       {isMenuOpen && (
-        <div className="absolute bottom-0 translate-y-48 flex flex-col bg-red-500 w-full px-2">
+        <div className="flex flex-col w-full px-2 mb-8 lg:hidden">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -38,11 +50,11 @@ export default function Header() {
               {link.name}
             </Link>
           ))}
-          <Link to="/recipes">
+          <div>
             <MainButton text="Browse Recipes" onClick={handleMenuToggle} />
-          </Link>
+          </div>
         </div>
       )}
-    </section>
+    </div>
   );
 }
