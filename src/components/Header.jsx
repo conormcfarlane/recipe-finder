@@ -26,17 +26,16 @@ export default function Header() {
             </Link>
           ))}
         </div>
-        <button
-          className="bg-neutral-100 p-3 cursor-pointer"
+
+        <div
+          className="bg-neutral-200 w-10 h-10 flex justify-center items-center rounded-lg lg:hidden cursor-pointer"
           onClick={handleMenuToggle}
         >
-          <div className="bg-neutral-200 w-10 h-10 flex justify-center items-center rounded-lg lg:hidden">
-            <img src={iconHamburger} alt="" />
-          </div>
-          <div className="hidden lg:block">
-            <MainButton text="Browse Recipes" />
-          </div>
-        </button>
+          <img src={iconHamburger} alt="" />
+        </div>
+        <div className="hidden lg:block">
+          <MainButton text="Browse Recipes" />
+        </div>
       </section>
       {isMenuOpen && (
         <div className="flex flex-col w-full px-2 mb-8 lg:hidden">
