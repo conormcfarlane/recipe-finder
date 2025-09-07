@@ -1,6 +1,6 @@
 import React from "react";
-import imageAboutOurMissionSmall from "../../assets/images/image-about-our-mission-small.webp";
-import imageAboutOurMissionLarge from "../../assets/images/image-about-our-mission-large.webp";
+import imageAboutOurMissionSmall from "/images/image-about-our-mission-small.webp";
+import imageAboutOurMissionLarge from "/images/image-about-our-mission-large.webp";
 
 export default function AboutHero() {
   return (

@@ -1,6 +1,6 @@
 import React from "react";
-import imageHomeRealLifeLarge from "../../assets/images/image-home-real-life-large.webp";
-import imageHomeRealLifeSmall from "../../assets/images/image-home-real-life-small.webp";
+import imageHomeRealLifeLarge from "/images/image-home-real-life-large.webp";
+import imageHomeRealLifeSmall from "/images/image-home-real-life-small.webp";
 
 export default function () {
   return (

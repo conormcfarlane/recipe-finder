@@ -1,14 +1,20 @@
 import React from "react";
 import RecipeData from "../../assets/data/data.json";
-import iconServing from "../../assets/images/icon-servings.svg";
-import iconPrepTime from "../../assets/images/icon-prep-time.svg";
-import iconCookTime from "../../assets/images/icon-cook-time.svg";
+import iconServing from "/images/icon-servings.svg";
+import iconPrepTime from "/images/icon-prep-time.svg";
+import iconCookTime from "/images/icon-cook-time.svg";
 
 export default function RecipesCard() {
+  const getImagePath = (jsonPath) => {
+    const filename = jsonPath.split("/").pop();
+    return `/images/${filename}`;
+  };
   const recipeCards = RecipeData.map((recipe) => ({
     id: recipe.id,
     title: recipe.title,
     overview: recipe.overview,
+    imageLarge: getImagePath(recipe.image.large),
+    imageSmall: getImagePath(recipe.image.small),
     details: [
       {
         label: "Servings:",
@@ -35,6 +41,10 @@ export default function RecipesCard() {
     <div>
       {recipeCards.map((card, id) => (
         <div key={id} className=" bg-green-400 p-2">
+          <picture>
+            <source srcSet={card.imageLarge} media="(min-width:1024px)" />
+            <img src={card.imageSmall} alt="" />
+          </picture>
           <div>
             <p>{card.title}</p>
             <p>{card.overview}</p>

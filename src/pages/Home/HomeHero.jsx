@@ -1,7 +1,7 @@
 import React from "react";
 import MainButton from "../../components/MainButton";
-import homeHeroSmall from "../../assets/images/image-home-hero-small.webp";
-import homeHeroLarge from "../../assets/images/image-home-hero-large.webp";
+import homeHeroSmall from "/images/image-home-hero-small.webp";
+import homeHeroLarge from "/images/image-home-hero-large.webp";
 export default function HomeHero() {
   return (
     <section>

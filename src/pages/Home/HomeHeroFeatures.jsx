@@ -1,7 +1,7 @@
 import React from "react";
-import iconWholeFoodRecipes from "../../assets/images/icon-whole-food-recipes.svg";
-import iconMinimumFuss from "../../assets/images/icon-minimum-fuss.svg";
-import iconSearch from "../../assets/images/icon-search.svg";
+import iconWholeFoodRecipes from "/images/icon-whole-food-recipes.svg";
+import iconMinimumFuss from "/images/icon-minimum-fuss.svg";
+import iconSearch from "/images/icon-search.svg";
 
 export default function HomeHeroFeatures() {
   const features = [

@@ -1,7 +1,7 @@
 import React from "react";
 import MainButton from "./MainButton";
-import patternFork from "../assets/images/pattern-fork.svg";
-import patternKnife from "../assets/images/pattern-knife.svg";
+import patternFork from "/images/pattern-fork.svg";
+import patternKnife from "/images/pattern-knife.svg";
 export default function ReadyToCook() {
   return (
     <section className="relative px-4 py-12 bg-neutral-200 flex flex-col text-center items-center gap-4 mt-18 rounded-xl md:gap-10 overflow-hidden md:py-20">

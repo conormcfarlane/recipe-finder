@@ -1,6 +1,6 @@
 import React from "react";
-import ImageBeyondThePlateLarge from "../../assets/images/image-about-beyond-the-plate-large.webp";
-import ImageBeyondThePlateSmall from "../../assets/images/image-about-beyond-the-plate-small.webp";
+import ImageBeyondThePlateLarge from "/images/image-about-beyond-the-plate-large.webp";
+import ImageBeyondThePlateSmall from "/images/image-about-beyond-the-plate-small.webp";
 
 export default function AboutBeyondThePlate() {
   return (

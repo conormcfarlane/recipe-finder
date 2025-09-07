@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import logo from "../assets/images/logo.svg";
-import iconHamburger from "../assets/images/icon-hamburger-menu.svg";
+import logo from "/images/logo.svg";
+import iconHamburger from "/images/icon-hamburger-menu.svg";
 import { Link } from "react-router-dom";
 import MainButton from "./MainButton";
 

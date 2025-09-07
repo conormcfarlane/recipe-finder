@@ -1,7 +1,7 @@
 import React from "react";
-import iconBlueSky from "../assets/images/icon-bluesky.svg";
-import iconInstagram from "../assets/images/icon-instagram.svg";
-import iconTiktok from "../assets/images/icon-tiktok.svg";
+import iconBlueSky from "/images/icon-bluesky.svg";
+import iconInstagram from "/images/icon-instagram.svg";
+import iconTiktok from "/images/icon-tiktok.svg";
 
 export default function Footer() {
   return (
