@@ -1,65 +1,49 @@
 import React from "react";
-import RecipeData from "../../assets/data/data.json";
 import iconServing from "/images/icon-servings.svg";
 import iconPrepTime from "/images/icon-prep-time.svg";
 import iconCookTime from "/images/icon-cook-time.svg";
+import { Link } from "react-router";
 
-export default function RecipesCard() {
-  const getImagePath = (jsonPath) => {
-    const filename = jsonPath.split("/").pop();
-    return `/images/${filename}`;
-  };
-  const recipeCards = RecipeData.map((recipe) => ({
-    id: recipe.id,
-    title: recipe.title,
-    overview: recipe.overview,
-    imageLarge: getImagePath(recipe.image.large),
-    imageSmall: getImagePath(recipe.image.small),
-    details: [
-      {
-        label: "Servings:",
-        value: recipe.servings,
-        icon: iconServing,
-      },
-      {
-        label: "Prep:",
-        value: `${recipe.prepMinutes} ${
-          recipe.prepMinutes === 0 ? "min" : "mins"
-        }`,
-        icon: iconPrepTime,
-      },
-      {
-        label: "Cook:",
-        value: `${recipe.cookMinutes} ${
-          recipe.cookMinutes === 0 ? "min" : "mins"
-        }`,
-        icon: iconCookTime,
-      },
-    ],
-  }));
+export default function RecipesCard({ recipe }) {
+  const imageSmallFilename = recipe.image.small.split("/").pop();
+
+  const imageSmallUrl = `/images/${imageSmallFilename}`;
+  const recipeDetails = [
+    { name: "Servings:", quantity: recipe.servings, icon: iconServing },
+    {
+      name: "Prep: ",
+      quantity: `${recipe.prepMinutes} ${
+        recipe.prepMinutes === 1 ? "min" : "mins"
+      } `,
+      icon: iconPrepTime,
+    },
+    {
+      name: "Cook:",
+      quantity: `${recipe.cookMinutes} ${
+        recipe.cookMinutes === 1 ? "min" : "mins"
+      }`,
+      icon: iconCookTime,
+    },
+  ];
   return (
-    <div>
-      {recipeCards.map((card, id) => (
-        <div key={id} className=" bg-green-400 p-2">
-          <picture>
-            <source srcSet={card.imageLarge} media="(min-width:1024px)" />
-            <img src={card.imageSmall} alt="" />
-          </picture>
-          <div>
-            <p>{card.title}</p>
-            <p>{card.overview}</p>
+    <div className="flex flex-col bg-green-400 gap-3 ">
+      <img src={imageSmallUrl} alt="" />
+      <p>{recipe.title}</p>
+      <p>{recipe.overview}</p>
+      <div className="flex flex-wrap items-center gap-4">
+        {recipeDetails.map((detail) => (
+          <div key={detail.name} className="flex gap-1">
+            <img src={detail.icon} alt="" />
+            <p>{detail.name}</p>
+            <p>{detail.quantity}</p>
           </div>
-          <div className="flex flex-wrap p-2 gap-4">
-            {card.details.map((detail) => (
-              <div key={detail.label} className="flex items-center gap-1 p-1 ">
-                <img src={detail.icon} alt="" />
-                <p>{detail.label}</p>
-                <p>{detail.value}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+        ))}
+      </div>
+      <Link to={`/recipes/${recipe.id}`}>
+        <button className="bg-green-900 cursor-pointer w-full rounded-full py-3 text-white">
+          View Recipe
+        </button>
+      </Link>
     </div>
   );
 }
