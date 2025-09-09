@@ -1,0 +1,86 @@
+import React from "react";
+import { Link } from "react-router-dom";
+import iconServing from "/images/icon-servings.svg";
+import iconPrepTime from "/images/icon-prep-time.svg";
+import iconCookTime from "/images/icon-cook-time.svg";
+import iconBulletPoint from "/images/icon-bullet-point.svg";
+
+export default function RecipeCardLayout({
+  recipe,
+  showButton = false,
+  showInstructions = false,
+}) {
+  const imageSmallFilename = recipe.image.small.split("/").pop();
+  const imageLargeFilename = recipe.image.large.split("/").pop();
+
+  const imageSmallUrl = `/images/${imageSmallFilename}`;
+  const imageLargeUrl = `/images/${imageLargeFilename}`;
+  const recipeDetails = [
+    { name: "Servings:", quantity: recipe.servings, icon: iconServing },
+    {
+      name: "Prep: ",
+      quantity: `${recipe.prepMinutes} ${
+        recipe.prepMinutes === 1 ? "min" : "mins"
+      } `,
+      icon: iconPrepTime,
+    },
+    {
+      name: "Cook:",
+      quantity: `${recipe.cookMinutes} ${
+        recipe.cookMinutes === 1 ? "min" : "mins"
+      }`,
+      icon: iconCookTime,
+    },
+  ];
+  const ingredientsInstructionsArray = [
+    { title: "Ingredients: ", items: recipe.ingredients },
+    {
+      title: "Instructions:",
+      items: recipe.instructions,
+    },
+  ];
+
+  return (
+    <div className="flex flex-col bg-green-400 gap-3 p-2 ">
+      <picture>
+        <source srcSet={imageLargeUrl} media="(min-width:1024px)" />
+        <img src={imageSmallUrl} alt="" className="rounded-xl w-full" />
+      </picture>
+      <p className="font-bold">{recipe.title}</p>
+      <p>{recipe.overview}</p>
+      <div className="flex flex-wrap items-center gap-4">
+        {recipeDetails.map((detail) => (
+          <div key={detail.name} className="flex gap-1">
+            <img src={detail.icon} alt="" />
+            <p>{detail.name}</p>
+            <p>{detail.quantity}</p>
+          </div>
+        ))}
+      </div>
+      {showButton && (
+        <Link to={`/recipes/${recipe.id}`}>
+          <button className="bg-green-900 cursor-pointer w-full rounded-full py-3 text-white">
+            View Recipe
+          </button>
+        </Link>
+      )}
+      {showInstructions && (
+        <section>
+          {ingredientsInstructionsArray.map((section, index) => (
+            <div key={section.title}>
+              <p>{section.title}</p>
+              <ul>
+                {section.items.map((item, index) => (
+                  <li key={index} className="flex gap-2 mb-2 items-center">
+                    <img src={iconBulletPoint} alt="" />
+                    <p>{item}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </section>
+      )}
+    </div>
+  );
+}
