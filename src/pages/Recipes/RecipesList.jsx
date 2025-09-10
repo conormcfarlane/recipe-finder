@@ -2,10 +2,10 @@ import React from "react";
 import RecipesCard from "./RecipesCard";
 import RecipeData from "../../assets/data/data.json";
 
-export default function RecipesList({}) {
+export default function RecipesList({ filteredRecipes }) {
   return (
     <div className="flex flex-col gap-8">
-      {RecipeData.map((recipe) => (
+      {filteredRecipes.map((recipe) => (
         <RecipesCard key={recipe.id} recipe={recipe} />
       ))}
     </div>
