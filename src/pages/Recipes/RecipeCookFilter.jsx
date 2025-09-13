@@ -5,17 +5,23 @@ export default function RecipeCookFilter({
   cookFilter,
   setCookFilter,
   options,
+  icon,
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <div>
-      <button onClick={() => setOpen(!open)} className="cursor-pointer">
-        Max Cook Time
-      </button>
+    <div className="bg-white p-2 w-full flex flex-col rounded-xl border-1 border-gray-300 ">
+      <div
+        className="flex items-center justify-center gap-2 w-full cursor-pointer"
+        onClick={() => setOpen(!open)}
+      >
+        <p>Max Cook Time</p>
+        <img src={icon} alt="" className="w-fit" />
+      </div>
+
       {open && (
         <div>
           {options.map((option) => (
-            <label className="flex gap-1 w-fit cursor-pointer">
+            <label className="flex gap-1 w-fit cursor-pointer p-2">
               <input
                 type="radio"
                 name="cookFilter"
@@ -39,7 +45,10 @@ export default function RecipeCookFilter({
               <span>{option} Minutes</span>
             </label>
           ))}
-          <span className="cursor-pointer" onClick={() => setCookFilter(null)}>
+          <span
+            className="cursor-pointer px-2"
+            onClick={(() => setCookFilter(null), () => setOpen(!open))}
+          >
             Clear
           </span>
         </div>

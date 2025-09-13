@@ -9,6 +9,7 @@ export default function RecipeCardLayout({
   recipe,
   showButton = false,
   showInstructions = false,
+  direction="col"
 }) {
   const imageSmallFilename = recipe.image.small.split("/").pop();
   const imageLargeFilename = recipe.image.large.split("/").pop();
@@ -41,46 +42,50 @@ export default function RecipeCardLayout({
   ];
 
   return (
-    <div className="flex flex-col bg-green-400 gap-3 p-2 ">
+    <div className={`flex flex-col lg:flex-${direction} gap-3 p-2 h-full bg-green-500`}>
       <picture>
         <source srcSet={imageLargeUrl} media="(min-width:1024px)" />
         <img src={imageSmallUrl} alt="" className="rounded-xl w-full" />
       </picture>
-      <p className="font-bold">{recipe.title}</p>
-      <p>{recipe.overview}</p>
-      <div className="flex flex-wrap items-center gap-4">
-        {recipeDetails.map((detail) => (
-          <div key={detail.name} className="flex gap-1">
-            <img src={detail.icon} alt="" />
-            <p>{detail.name}</p>
-            <p>{detail.quantity}</p>
+      <div className="lg:flex lg:flex-col lg:h-full">
+        <div className="px-2 flex flex-col gap-3 flex-1">
+          <p className="font-bold md:text-4xl">{recipe.title}</p>
+          <p>{recipe.overview}</p>
+          <div className="flex flex-wrap items-center gap-4">
+            {recipeDetails.map((detail) => (
+              <div key={detail.name} className="flex gap-1">
+                <img src={detail.icon} alt="" />
+                <p>{detail.name}</p>
+                <p>{detail.quantity}</p>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+        {showButton && (
+          <Link to={`/recipes/${recipe.id}`}>
+            <button className="bg-green-900 cursor-pointer w-full rounded-full py-3 text-white mt-4 lg:mt-auto">
+              View Recipe
+            </button>
+          </Link>
+        )}
+        {showInstructions && (
+          <section className="mt-5">
+            {ingredientsInstructionsArray.map((section, index) => (
+              <div key={section.title}>
+                <p>{section.title}</p>
+                <ul>
+                  {section.items.map((item, index) => (
+                    <li key={index} className="flex gap-2 mb-2 items-center">
+                      <img src={iconBulletPoint} alt="" />
+                      <p>{item}</p>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </section>
+        )}
       </div>
-      {showButton && (
-        <Link to={`/recipes/${recipe.id}`}>
-          <button className="bg-green-900 cursor-pointer w-full rounded-full py-3 text-white">
-            View Recipe
-          </button>
-        </Link>
-      )}
-      {showInstructions && (
-        <section>
-          {ingredientsInstructionsArray.map((section, index) => (
-            <div key={section.title}>
-              <p>{section.title}</p>
-              <ul>
-                {section.items.map((item, index) => (
-                  <li key={index} className="flex gap-2 mb-2 items-center">
-                    <img src={iconBulletPoint} alt="" />
-                    <p>{item}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </section>
-      )}
     </div>
   );
 }

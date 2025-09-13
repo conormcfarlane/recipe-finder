@@ -5,17 +5,23 @@ export default function RecipePrepFilter({
   prepFilter,
   setPrepFilter,
   options,
+  icon,
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <div className="bg-white p-2 w-full flex flex-col items-center">
-      <button onClick={() => setOpen(!open)} className="cursor-pointer">
-        Max Prep Time
-      </button>
+    <div className="bg-white py-2 w-full flex flex-col rounded-xl border-1 border-gray-300">
+      <div
+        className="flex items-center justify-center gap-2 w-full cursor-pointer"
+        onClick={() => setOpen(!open)}
+      >
+        <p>Max Prep Time</p>
+        <img src={icon} alt="" className="w-fit" />
+      </div>
+
       {open && (
         <div className="">
           {options.map((option) => (
-            <label className="flex items-center gap-1 w-fit">
+            <label className="flex gap-1 w-fit p-2">
               <input
                 type="radio"
                 name="preptime"
@@ -39,7 +45,10 @@ export default function RecipePrepFilter({
               <span>{option} Minutes</span>
             </label>
           ))}
-          <span className="cursor-pointer" onClick={() => setPrepFilter(null)}>
+          <span
+            className="cursor-pointer px-2"
+            onClick={(() => setPrepFilter(null), () => setOpen(!open))}
+          >
             Clear
           </span>
         </div>

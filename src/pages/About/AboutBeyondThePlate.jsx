@@ -1,6 +1,13 @@
 import React from "react";
 import ImageBeyondThePlateLarge from "/images/image-about-beyond-the-plate-large.webp";
 import ImageBeyondThePlateSmall from "/images/image-about-beyond-the-plate-small.webp";
+import iconBulletPoint from "/images/icon-bullet-point.svg";
+
+const beyondThePlateList = [
+  { text: "Encourage family dinners and social cooking" },
+  { text: "Reduce reliance on single-use packaging and delivery waste." },
+  { text: "Spark curiosity about seasonal produce and local agriculture" },
+];
 
 export default function AboutBeyondThePlate() {
   return (
@@ -12,9 +19,13 @@ export default function AboutBeyondThePlate() {
           approachable recipes, we hope to:
         </p>
         <ul className="list-disc list-outside pl-4">
-          <li>Encourage family dinners and social cooking</li>
-          <li>Reduce reliance on single-use packaging and delivery waste.</li>
-          <li>Spark curiosity about seasonal produce and local agriculture</li>
+          {beyondThePlateList.map((item) => (
+            <div key={item.text} className="flex list-none gap-2 items-center">
+              <img src={iconBulletPoint} alt="" className="w-6" />
+              <li>{item.text}</li>
+            </div>
+           
+          ))}
         </ul>
       </div>
 
