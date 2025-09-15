@@ -9,7 +9,7 @@ export default function RecipeCardLayout({
   recipe,
   showButton = false,
   showInstructions = false,
-  direction="col"
+  direction = "col",
 }) {
   const imageSmallFilename = recipe.image.small.split("/").pop();
   const imageLargeFilename = recipe.image.large.split("/").pop();
@@ -42,7 +42,7 @@ export default function RecipeCardLayout({
   ];
 
   return (
-    <div className={`flex flex-col lg:flex-${direction} gap-3 p-2 h-full bg-green-500`}>
+    <div className={`flex flex-col lg:flex-${direction} gap-3 p-2 h-full`}>
       <picture>
         <source srcSet={imageLargeUrl} media="(min-width:1024px)" />
         <img src={imageSmallUrl} alt="" className="rounded-xl w-full" />

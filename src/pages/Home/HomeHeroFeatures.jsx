@@ -8,7 +8,7 @@ export default function HomeHeroFeatures() {
     {
       icon: iconWholeFoodRecipes,
       title: "Whole-food recipes",
-      desc: "Each dish uses everyday,unprocessed ingrediants",
+      desc: "Each dish uses everyday, unprocessed ingredients",
     },
     {
       icon: iconMinimumFuss,
@@ -27,7 +27,7 @@ export default function HomeHeroFeatures() {
       <p className="text-4xl font-extrabold mb-8 md:text-center">
         What you'll get
       </p>
-      <div className="flex flex-col lg:flex-row">
+      <div className="flex flex-col lg:flex-row lg:gap-8">
         {features.map((feature) => (
           <div key={feature.title} className="flex flex-col mb-6 flex-1">
             <div className="w-15 h-15 mb-5 bg-white flex items-center justify-center rounded-2xl">
